@@ -1,0 +1,44 @@
+{
+  "name": "ukraine-alert-map-windows",
+  "productName": "Ukraine Alert Map",
+  "version": "1.0.0",
+  "description": "Віджет повітряних тривог і цілей в Україні для Windows 11",
+  "main": "main.js",
+  "author": "Sandeymq",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/*.test.js\"",
+    "dist": "electron-builder --win nsis --x64 --publish never"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.sandeymq.ukraine-alert-map",
+    "productName": "Ukraine Alert Map",
+    "copyright": "Copyright (c) 2022 Dmytro Panin; Copyright (c) 2026 Sandeymq",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "src/**/*", "package.json"],
+    "artifactName": "Ukraine-Alert-Map-Setup-${version}.exe",
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ukraine Alert Map",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
